@@ -1,0 +1,64 @@
+{
+	"private": true,
+	"name": "mss",
+	"version": "0.0.0",
+	"license": "UNLICENSED",
+	"author": "Philippe Schommers <philippe@schommers.be>",
+	"scripts": {
+		"build": "preact build",
+		"serve": "sirv build --port 8080 --cors --single",
+		"dev": "preact watch --refresh",
+		"lint": "eslint src"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,json,css,md}": [
+			"prettier --write",
+			"git add"
+		]
+	},
+	"eslintIgnore": [
+		"build/*"
+	],
+	"eslintConfig": {
+		"extends": "preact",
+		"globals": {
+			"PRODUCTION": "readonly"
+		}
+	},
+	"devDependencies": {
+		"eslint": "^6.0.1",
+		"eslint-config-preact": "^1.1.2",
+		"eslint-config-synacor": "^3.0.4",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.4.2",
+		"preact-cli": "^3.0.0",
+		"prettier": "^2.1.2",
+		"sirv-cli": "^1.0.3"
+	},
+	"dependencies": {
+		"@material-ui/core": "^4.11.0",
+		"@material-ui/icons": "^4.9.1",
+		"chart.js": "^2.9.4",
+		"clsx": "^1.1.1",
+		"d3-scale": "^3.2.3",
+		"d3-scale-chromatic": "^2.0.0",
+		"d3-shape": "^2.0.0",
+		"date-fns": "^2.16.1",
+		"function-plot": "^1.22.2",
+		"preact": "^10.1.0",
+		"preact-render-to-string": "^5.1.2",
+		"preact-router": "^3.2.1",
+		"react-chartjs-2": "^2.10.0",
+		"react-feather": "^2.0.8",
+		"react-grid-layout": "^1.1.1",
+		"react-latex": "^2.0.0",
+		"react-perfect-scrollbar": "^1.5.8",
+		"react-use": "^15.3.4",
+		"recharts": "^1.8.5"
+	}
+}
