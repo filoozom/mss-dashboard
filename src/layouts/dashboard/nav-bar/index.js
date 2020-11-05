@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'preact/hooks'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // Assets
 import AvatarImage from 'src/assets/images/avatars/avatar_3.png'
@@ -69,16 +69,14 @@ const useStyles = makeStyles(() => ({
 
 const NavBar = ({ onMobileClose, openMobile }) => {
 	const classes = useStyles()
-
-	// TODO: Link this to route change (global state)
-	const location = useState('/')
+	const location = useLocation()
 
 	useEffect(() => {
 		if (openMobile && onMobileClose) {
 			onMobileClose()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [location])
+	}, [location.pathname])
 
 	const content = (
 		<Box height="100%" display="flex" flexDirection="column">
