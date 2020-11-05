@@ -1,6 +1,5 @@
-import { Link } from 'preact-router'
 import clsx from 'clsx'
-import { forwardRef } from 'preact/compat'
+import { NavLink } from 'react-router-dom'
 
 // Material-UI
 import { Button, ListItem, makeStyles } from '@material-ui/core'
@@ -37,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-const ButtonLink = forwardRef((props, ref) => <Link ref={ref} {...props} />)
-
 const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
 	const classes = useStyles()
 
@@ -51,8 +48,8 @@ const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
 			<Button
 				activeClassName={classes.active}
 				className={classes.button}
-				component={ButtonLink}
-				href={href}
+				component={NavLink}
+				to={href}
 			>
 				{Icon && <Icon className={classes.icon} size="20" />}
 				<span className={classes.title}>{title}</span>

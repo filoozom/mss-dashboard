@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks'
+import { Outlet } from 'react-router-dom'
 
 // Material-UI
 import { makeStyles } from '@material-ui/core'
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }))
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = () => {
 	const classes = useStyles()
 	const [isMobileNavOpen, setMobileNavOpen] = useState(false)
 
@@ -49,7 +50,9 @@ const DashboardLayout = ({ children }) => {
 			/>
 			<div className={classes.wrapper}>
 				<div className={classes.contentContainer}>
-					<div className={classes.content}>{children}</div>
+					<div className={classes.content}>
+						<Outlet />
+					</div>
 				</div>
 			</div>
 		</div>

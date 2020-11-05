@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks'
-import { Link } from 'preact-router'
+import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 
 // Material-UI
@@ -34,7 +34,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
 	return (
 		<AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
 			<Toolbar>
-				<Link href="/">
+				<Link to="/">
 					<Logo />
 				</Link>
 				<Box flexGrow={1} />

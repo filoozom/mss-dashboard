@@ -1,4 +1,4 @@
-import { Router } from 'preact-router'
+import { BrowserRouter, Navigate, useRoutes } from 'react-router-dom'
 
 // Material-UI
 import { ThemeProvider, createStyles, makeStyles } from '@material-ui/core'
@@ -44,6 +44,24 @@ const useStyles = makeStyles(() =>
 	})
 )
 
+// Routes
+const routes = [
+	{
+		path: '/',
+		element: <DashboardLayout />,
+		children: [
+			{ path: '/', element: <Dashboard /> },
+			{ path: '/drag-and-drop', element: <DragAndDrop /> },
+			{ path: '/charts', element: <Charts /> },
+			{ path: '*', element: <Navigate to="/404" /> },
+		],
+	},
+]
+
+const Routing = () => {
+	return useRoutes(routes)
+}
+
 const App = () => {
 	// TODO: Make this a global state and toggle it on login
 	// const [loggedIn, setLoggedIn] = useState(false)
@@ -52,15 +70,11 @@ const App = () => {
 	useStyles()
 
 	return (
-		<ThemeProvider theme={theme}>
-			<DashboardLayout>
-				<Router>
-					<Dashboard path="/" />
-					<DragAndDrop path="/drag-and-drop" />
-					<Charts path="/charts" />
-				</Router>
-			</DashboardLayout>
-		</ThemeProvider>
+		<BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<Routing />
+			</ThemeProvider>
+		</BrowserRouter>
 	)
 }
 

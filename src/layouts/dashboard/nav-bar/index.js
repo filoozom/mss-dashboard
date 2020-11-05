@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'preact/hooks'
-import { Link } from 'preact-router'
+import { Link } from 'react-router-dom'
 
 // Assets
 import AvatarImage from 'src/assets/images/avatars/avatar_3.png'
@@ -87,7 +87,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 					className={classes.avatar}
 					component={Link}
 					src={user.avatar}
-					href="/"
+					to="/"
 				/>
 				<Typography className={classes.name} color="textPrimary" variant="h5">
 					{user.name}
