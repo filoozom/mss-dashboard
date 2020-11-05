@@ -1,4 +1,6 @@
 import { BrowserRouter, Navigate, useRoutes } from 'react-router-dom'
+import { Provider as ReduxProvider } from 'react-redux'
+import { createStore } from 'redux'
 
 // Material-UI
 import { ThemeProvider, createStyles, makeStyles } from '@material-ui/core'
@@ -58,6 +60,9 @@ const routes = [
 	},
 ]
 
+// Redux store
+const store = createStore(() => {})
+
 const Routing = () => {
 	return useRoutes(routes)
 }
@@ -71,9 +76,11 @@ const App = () => {
 
 	return (
 		<BrowserRouter>
-			<ThemeProvider theme={theme}>
-				<Routing />
-			</ThemeProvider>
+			<ReduxProvider store={store}>
+				<ThemeProvider theme={theme}>
+					<Routing />
+				</ThemeProvider>
+			</ReduxProvider>
 		</BrowserRouter>
 	)
 }
